@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden bg-black">
 
-      {/* Background Video */}
+     
       <video
         autoPlay
         loop
@@ -23,10 +23,9 @@ export default function Hero() {
         />
       </video>
 
-      {/* Overlay */}
+     
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
 
-      {/* CONTENT */}
       <div className="absolute bottom-16 sm:bottom-20 left-4 sm:left-10 lg:left-16 right-4 sm:right-auto max-w-2xl text-white">
 
         <p className="text-[10px] sm:text-[11px] tracking-[3px] sm:tracking-[4px] text-gray-400 mb-3 sm:mb-4 uppercase">
@@ -42,7 +41,7 @@ export default function Hero() {
           North America's most powerful retail & entertainment destination.
         </p>
 
-        {/* BUTTONS */}
+
         <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
 
           <button
@@ -80,11 +79,10 @@ export default function Hero() {
           >
             Partner With Us
           </button>
-
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      
       <div className="hidden sm:flex absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/40">
         <span className="text-[10px] tracking-[3px] uppercase">Scroll</span>
         <div className="w-px h-6 sm:h-8 bg-white/20 animate-pulse" />
