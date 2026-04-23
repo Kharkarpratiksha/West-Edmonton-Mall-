@@ -1,126 +1,111 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const navLinks = [
-    { name: 'Overview',    href: '#hero' },
-    { name: 'Scale',       href: '#scale' },
-    { name: 'Retail',      href: '#retail' },
-    { name: 'Luxury',      href: '#luxury' },
-    { name: 'Dining',      href: '#dining' },
+    { name: 'Overview', href: '#hero' },
+    { name: 'Retail', href: '#retail' },
     { name: 'Attractions', href: '#attractions' },
-    { name: 'Events',      href: '#events' },
+    { name: 'Events', href: '#events' },
+    { name: 'Contact', href: '#contact' }
   ];
-
-  const scrollTo = (href) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <>
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-black/90 backdrop-blur-md border-b border-white/10'
-            : 'bg-transparent border-b border-white/0'
-        }`}
-      >
+      <nav className="fixed top-0 w-full z-50 glass border-b border-gray-200/20">
         <div className="max-w-7xl mx-auto px-6">
+
           <div className="flex justify-between items-center h-16">
 
-            {/* LOGO */}
+            {/* LOGO + NAME */}
             <motion.a
               href="#hero"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="flex items-center gap-3 cursor-pointer"
-              whileHover={{ opacity: 0.8 }}
+              whileHover={{ scale: 1.02 }}
             >
               <img
                 src="/WEM_Cocoa_Logo.svg"
                 alt="West Edmonton Mall"
-                className="h-8 w-auto brightness-0 invert"
+                className="h-10 w-auto"
               />
-              <span className="text-white text-sm font-light tracking-[2px] uppercase hidden md:block">
+
+              <span className="text-gray-900 text-sm md:text-base font-medium tracking-wide">
                 West Edmonton Mall
               </span>
             </motion.a>
 
-            {/* Desktop Links */}
-            <div className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
-                
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
-                  className="text-white/60 hover:text-white text-[11px] tracking-[2px] uppercase transition duration-300"
-                >
-                  {link.name}
-                </a>
-              ))}
-              {/* Primary CTA */}
-              <button
-                onClick={() => scrollTo('#contact')}
-                className="px-5 py-2 border border-white/30 text-white text-[11px] tracking-[2px] uppercase hover:bg-white hover:text-black transition duration-300"
-              >
-                Contact Us
-              </button>
+            {/* Desktop Menu */}
+            <div className="hidden lg:block">
+              <div className="ml-10 flex items-baseline space-x-8">
+                {navLinks.map((link) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const element = document.querySelector(link.href);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-all duration-300 hover:bg-gray-100/40 rounded-lg"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    {link.name}
+                  </motion.a>
+                ))}
+              </div>
             </div>
 
             {/* Mobile Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-white p-2"
-            >
-              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {mobileMenuOpen
-                  ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
-                  : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16" />
-                }
-              </svg>
-            </button>
+            <div className="lg:hidden">
+              <motion.button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="glass inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+              >
+                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </motion.button>
+            </div>
 
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       {mobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, y: -10 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="fixed top-16 left-0 right-0 bg-black/95 backdrop-blur-md border-b border-white/10 z-40 lg:hidden"
+          className="fixed top-16 left-0 right-0 glass border-b border-gray-200/20 z-40 lg:hidden"
         >
-          <div className="px-6 py-6 space-y-4">
+          <div className="px-4 pt-4 pb-4 space-y-2">
             {navLinks.map((link) => (
-              
+              <motion.a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollTo(link.href);
+                  const element = document.querySelector(link.href);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
                   setMobileMenuOpen(false);
                 }}
-                className="block text-white/60 hover:text-white text-[11px] tracking-[3px] uppercase py-2 transition duration-300"
+                className="block text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-gray-100/40 rounded-lg"
+                whileHover={{ x: 8 }}
               >
                 {link.name}
-              </a>
+              </motion.a>
             ))}
-            <button
-              onClick={() => { scrollTo('#contact'); setMobileMenuOpen(false); }}
-              className="w-full mt-2 px-5 py-3 border border-white/30 text-white text-[11px] tracking-[2px] uppercase hover:bg-white hover:text-black transition duration-300"
-            >
-              Contact Us
-            </button>
           </div>
         </motion.div>
       )}
