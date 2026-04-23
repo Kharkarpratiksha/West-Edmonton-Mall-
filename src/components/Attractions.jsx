@@ -8,13 +8,13 @@ const Attractions = () => {
     {
       title: 'World Waterpark',
       description: "Canada's largest indoor waterpark with thrilling slides and wave pools",
-      video: 'World-Waterpark1.mp4',
+      video: 'https://res.cloudinary.com/du5io3wiz/video/upload/v1776934603/World-Waterpark1_qfxxkk.mp4',
       features: ['50+ Water Slides', 'Wave Pools', 'Lazy River', 'Year-Round Fun']
     },
     {
       title: 'Galaxyland',
       description: "Edmonton's premier amusement park with rides for all ages",
-      video: 'Amusement1.mp4',
+      video: 'https://res.cloudinary.com/du5io3wiz/video/upload/q_auto/f_auto/v1776934747/Amusement1_bmgutg.mp4',
       features: ['30+ Rides', 'Family Attractions', 'Live Entertainment', 'Seasonal Events']
     }
   ];
@@ -71,12 +71,10 @@ const Attractions = () => {
             {/* BUTTON + DOTS */}
             <div className="flex items-center gap-4">
               
-              {/* GOLD BUTTON */}
-             <button className="border border-white text-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300">
-             Play Video
-             </button>
+              <button className="border border-white text-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300">
+                Play Video
+              </button>
 
-              {/* DOTS */}
               <div className="flex gap-2 ml-4">
                 {attractions.map((_, index) => (
                   <button

@@ -12,8 +12,11 @@ export default function Hero() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
       >
-        <source src="./video1.mp4" type="video/mp4" />
-      </video>
+        <source
+          src="https://res.cloudinary.com/du5io3wiz/video/upload/f_auto,q_auto/video1_lrzgul.mp4"
+          type="video/mp4"
+        />
+              </video>
 
     {/* Bottom Luxury Gradient Overlay */}
 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent"></div>
