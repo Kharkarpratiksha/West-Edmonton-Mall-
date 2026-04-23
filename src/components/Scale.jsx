@@ -1,84 +1,86 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Dining = () => {
-  const stats = [
-    { title: 'Satisfied Customers', value: '30+' },
-    { title: 'Award Winning', value: '5k+' },
-    { title: 'Years of Experience', value: '07+' },
-    { title: 'Projects Delivered', value: '33+' },
-  ];
+const stats = [
+  { value: '5.3M', label: 'Square Feet', sub: 'Largest mall in North America' },
+  { value: '800+', label: 'Stores & Services', sub: 'Retail, dining & entertainment' },
+  { value: '32M+', label: 'Annual Visitors', sub: 'More than NYC Times Square' },
+  { value: '24K+', label: 'Parking Stalls', sub: 'Unmatched accessibility' },
+];
 
-  return (
-    <section className="min-h-screen flex items-center justify-center bg-white px-6 py-16">
-      <div className="max-w-7xl w-full grid md:grid-cols-2 gap-10 items-center">
+const Scale = () => (
+  <section className="min-h-screen bg-[#f5f0eb] flex flex-col justify-center px-6 py-20">
+    <div className="max-w-6xl mx-auto w-full">
 
-        {/* LEFT SIDE */}
-        <div>
-          <motion.h2
-            initial={{ opacity: 0, y: -50 }}
+      {/* Label */}
+      <p className="text-[11px] tracking-[4px] text-stone-400 uppercase mb-6">
+        The Scale
+      </p>
+
+      {/* Heading */}
+      <motion.h2
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9 }}
+        className="text-5xl md:text-7xl font-light text-stone-900 font-serif leading-tight mb-6 max-w-3xl"
+      >
+        Nothing Else<br />
+        <span className="italic text-stone-400">Comes Close.</span>
+      </motion.h2>
+
+      <p className="text-stone-500 text-base leading-relaxed mb-16 max-w-xl">
+        West Edmonton Mall isn't just the largest mall in North America —
+        it's a city unto itself. The numbers speak for themselves.
+      </p>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-stone-200 border border-stone-200 mb-16">
+        {stats.map((s, i) => (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6"
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+            className="bg-[#f5f0eb] p-8 group hover:bg-stone-100 transition duration-300"
           >
-            Dining & Lifestyle Experience
-          </motion.h2>
-
-          <p className="text-gray-600 mb-8">
-            Discover a curated mix of dining options and lifestyle experiences designed to attract millions of visitors.
-          </p>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -6, scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="p-6 rounded-xl cursor-pointer border border-gray-200 bg-gray-100 text-gray-900 hover:bg-white hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-2xl font-bold">{item.value}</div>
-                <div className="text-sm mt-1 opacity-80">{item.title}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT SIDE IMAGES */}
-        <div className="grid grid-cols-2 gap-4">
-
-          {/* BIG IMAGE */}
-          <div className="col-span-2 overflow-hidden rounded-xl group">
-            <img
-              src="/dining/mall-img3.jpg"
-              alt="dining"
-              className="w-full h-64 object-cover transition duration-500 group-hover:scale-105 group-hover:brightness-75"
-            />
-          </div>
-
-          {/* SMALL IMAGE 1 */}
-          <div className="overflow-hidden rounded-xl group">
-            <img
-              src="/dining/mall-img2.jpg"
-              alt="dining"
-              className="w-full h-44 object-cover transition duration-500 group-hover:scale-105 group-hover:brightness-75"
-            />
-          </div>
-
-          {/* SMALL IMAGE 2 */}
-          <div className="overflow-hidden rounded-xl group">
-            <img
-              src="/dining/mall-img1.jpg"
-              alt="dining"
-              className="w-full h-44 object-cover transition duration-500 group-hover:scale-105 group-hover:brightness-75"
-            />
-          </div>
-
-        </div>
-
+            <div className="text-4xl md:text-5xl font-light text-stone-900 mb-2">
+              {s.value}
+            </div>
+            <div className="text-[11px] tracking-[2px] text-stone-500 uppercase mb-2">
+              {s.label}
+            </div>
+            <div className="text-[11px] text-stone-400 leading-relaxed">
+              {s.sub}
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </section>
-  );
-};
 
-export default Dining;
+      {/* Bottom row */}
+      <div className="grid md:grid-cols-3 gap-px bg-stone-200 border border-stone-200">
+        {[
+          { label: 'Location', value: 'Edmonton, Alberta, Canada' },
+          { label: 'Opened', value: '1981 — Over 40 Years of Dominance' },
+          { label: 'Catchment Area', value: '2M+ residents within 3-hour drive' },
+        ].map((item) => (
+          <div key={item.label} className="bg-[#f5f0eb] px-8 py-6">
+            <div className="text-[11px] tracking-[2px] text-stone-400 uppercase mb-2">
+              {item.label}
+            </div>
+            <div className="text-stone-800 font-light text-sm">{item.value}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* CTA */}
+      <div className="mt-12">
+        <button className="px-10 py-3 border border-stone-300 text-stone-900 text-[11px] tracking-[3px] uppercase hover:bg-stone-900 hover:text-white transition duration-300">
+          Download Property Overview
+        </button>
+      </div>
+
+    </div>
+  </section>
+);
+
+export default Scale;

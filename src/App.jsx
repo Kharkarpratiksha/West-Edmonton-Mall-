@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import Scale from "./components/Scale";
 import Retail from "./components/Retail";
 import Lifestyle from "./components/Lifestyle";
+import Dinning from "./components/Dinning";
 import Events from "./components/Events";
 import Attractions from "./components/Attractions";
 import Luxury from "./components/Luxury";
@@ -17,6 +18,7 @@ function App() {
       <Scale />
       <Retail />
       <Luxury />
+      <Dinning />
       <Lifestyle />
       <Events />
       <Attractions />

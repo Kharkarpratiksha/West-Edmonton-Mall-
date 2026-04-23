@@ -1,99 +1,109 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-const Attractions = () => {
-  const [activeVideo, setActiveVideo] = useState(0);
+const attractions = [
+  {
+    title: 'World Waterpark',
+    label: 'Aquatic Entertainment',
+    description: "Canada's largest indoor waterpark — 5 acres of year-round thrills drawing families from across the continent.",
+    video: 'https://res.cloudinary.com/du5io3wiz/video/upload/v1776934603/World-Waterpark1_qfxxkk.mp4',
+    features: ['50+ Water Slides', 'Wave Pools', 'Lazy River', 'Year-Round Operation'],
+    stat: '1M+ riders/year',
+  },
+  {
+    title: 'Galaxyland',
+    label: 'Amusement Park',
+    description: "One of Canada's largest indoor amusement parks — 30+ rides, live entertainment, and family programming 365 days a year.",
+    video: 'https://res.cloudinary.com/du5io3wiz/video/upload/q_auto/f_auto/v1776934747/Amusement1_bmgutg.mp4',
+    features: ['30+ Rides & Attractions', 'Family Zones', 'Live Entertainment', 'Seasonal Events'],
+    stat: '800K+ visitors/year',
+  },
+];
 
-  const attractions = [
-    {
-      title: 'World Waterpark',
-      description: "Canada's largest indoor waterpark with thrilling slides and wave pools",
-      video: 'https://res.cloudinary.com/du5io3wiz/video/upload/v1776934603/World-Waterpark1_qfxxkk.mp4',
-      features: ['50+ Water Slides', 'Wave Pools', 'Lazy River', 'Year-Round Fun']
-    },
-    {
-      title: 'Galaxyland',
-      description: "Edmonton's premier amusement park with rides for all ages",
-      video: 'https://res.cloudinary.com/du5io3wiz/video/upload/q_auto/f_auto/v1776934747/Amusement1_bmgutg.mp4',
-      features: ['30+ Rides', 'Family Attractions', 'Live Entertainment', 'Seasonal Events']
-    }
-  ];
+const Attractions = () => {
+  const [active, setActive] = useState(0);
 
   return (
-    <section className="relative h-screen flex items-center justify-center bg-slate-200 overflow-hidden">
+    <section id="attractions" className="relative h-screen flex items-center justify-center bg-black overflow-hidden">
 
-      {/* VIDEO */}
+      {/* Background Video */}
       <video
-        key={activeVideo}
-        className="absolute right-0 top-0 w-full lg:w-2/3 h-full object-cover"
-        src={attractions[activeVideo].video}
+        key={active}
+        className="absolute inset-0 w-full h-full object-cover"
+        src={attractions[active].video}
         autoPlay
         loop
         muted
         playsInline
       />
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
 
-      {/* CONTENT */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
-          
-          {/* LEFT CARD */}
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+
+          {/* LEFT */}
           <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="bg-[#0B1C2C] text-white p-10 md:p-12 rounded-xl shadow-2xl max-w-lg"
+            key={active}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
           >
-            <p className="text-sm text-gray-400 mb-3">Amazing Experience</p>
-
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-snug">
-              {attractions[activeVideo].title}
-            </h2>
-
-            <p className="text-gray-300 mb-6">
-              {attractions[activeVideo].description}
+            {/* Label */}
+            <p className="text-[11px] tracking-[4px] text-gray-500 uppercase mb-4">
+              {attractions[active].label}
             </p>
 
-            {/* FEATURES */}
-            <ul className="space-y-2 mb-6">
-              {attractions[activeVideo].features.map((feature, index) => (
-                <li key={index} className="flex items-center text-gray-300">
-                  <span className="w-2 h-2 bg-white rounded-full mr-3"></span>
-                  {feature}
-                </li>
+            <h2 className="text-4xl md:text-6xl font-light text-white font-serif leading-tight mb-4">
+              {attractions[active].title}
+            </h2>
+
+            <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-md">
+              {attractions[active].description}
+            </p>
+
+            {/* Features */}
+            <div className="grid grid-cols-2 gap-3 mb-8">
+              {attractions[active].features.map((f) => (
+                <div key={f} className="flex items-center gap-2">
+                  <div className="w-px h-3 bg-white/40" />
+                  <span className="text-gray-400 text-[11px] tracking-[1px] uppercase">{f}</span>
+                </div>
               ))}
-            </ul>
+            </div>
 
-            {/* BUTTON + DOTS */}
-            <div className="flex items-center gap-4">
-              
-              <button className="border border-white text-white px-6 py-2 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300">
-                Play Video
+            {/* Stat */}
+            <div className="border-l border-white/20 pl-4 mb-8">
+              <p className="text-white text-xl font-light">{attractions[active].stat}</p>
+              <p className="text-gray-600 text-[11px] tracking-[2px] uppercase mt-1">Attraction Scale</p>
+            </div>
+
+            {/* CTAs + Dots */}
+            <div className="flex items-center gap-6">
+              <button className="px-8 py-3 bg-white text-black text-[11px] tracking-[3px] uppercase hover:bg-gray-100 transition duration-300">
+                Book a Group Visit
               </button>
-
-              <div className="flex gap-2 ml-4">
-                {attractions.map((_, index) => (
+              <div className="flex gap-2">
+                {attractions.map((_, i) => (
                   <button
-                    key={index}
-                    onClick={() => setActiveVideo(index)}
-                    className={`w-3 h-3 rounded-full transition ${
-                      activeVideo === index ? 'bg-white' : 'bg-gray-500'
+                    key={i}
+                    onClick={() => setActive(i)}
+                    className={`transition-all duration-300 rounded-full ${
+                      active === i ? 'w-6 h-1 bg-white' : 'w-3 h-3 bg-gray-600'
                     }`}
                   />
                 ))}
               </div>
-
             </div>
+
           </motion.div>
 
-          <div></div>
-
+          <div />
         </div>
       </div>
+
     </section>
   );
 };

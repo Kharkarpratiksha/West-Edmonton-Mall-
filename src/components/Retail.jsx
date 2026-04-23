@@ -1,76 +1,81 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Retail = () => {
-  const brands = [
-    { name: 'Nike', img: '/brands/Nike-img.jpg' },
-    { name: 'Zara', img: '/brands/Zara-img.jpg' },
-    { name: 'H&M', img: '/brands/H&M.jpg' },
-    { name: 'Apple', img: '/brands/Apple-img.jpg' },
-    { name: 'Starbucks', img: '/brands/Starbucks-img.jpg' },
-    { name: 'Sephora', img: '/brands/Sephora-img.jpg' },
-    { name: 'Adidas', img: '/brands/Adidas-img.jpg' },
-  ];
+const brands = [
+  { name: 'Nike',      tag: 'Flagship · Sportswear', img: '/brands/Nike-img.jpg' },
+  { name: 'Zara',      tag: 'Global Fashion',         img: '/brands/Zara-img.jpg' },
+  { name: 'H&M',       tag: 'Fast Fashion',           img: '/brands/H&M.jpg' },
+  { name: 'Apple',     tag: 'Premium Tech',           img: '/brands/Apple-img.jpg' },
+  { name: 'Starbucks', tag: 'Lifestyle & Café',       img: '/brands/Starbucks-img.jpg' },
+  { name: 'Sephora',   tag: 'Beauty & Wellness',      img: '/brands/Sephora-img.jpg' },
+  { name: 'Adidas',    tag: 'Sport Lifestyle',        img: '/brands/Adidas-img.jpg' },
+];
 
-  return (
-    <section id="retail" className="h-screen bg-black text-white flex flex-col justify-center overflow-hidden pt-10 md:pt-14">
-      
-      {/* Heading */}
-      <div className="text-center mb-10 px-6">
-        <h2 className="text-5xl md:text-7xl font-bold">
-          A Global Retail Destination
-        </h2>
-        <p className="text-gray-400 mt-4">
-          Home to world-class brands and premium experiences
-        </p>
-      </div>
+const BrandCard = ({ brand }) => (
+  <motion.div
+    whileHover={{ scale: 1.02 }}
+    className="relative min-w-[280px] h-[380px] rounded-sm overflow-hidden bg-[#111] border border-[#1a1a1a] flex-shrink-0"
+  >
+    <img
+      src={brand.img}
+      alt={brand.name}
+      className="w-full h-full object-cover"
+      onError={(e) => { e.target.style.opacity = '0'; }}
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+    <div className="absolute bottom-5 left-5">
+      <p className="text-white text-sm tracking-[2px] uppercase">{brand.name}</p>
+      <p className="text-gray-500 text-[10px] tracking-[1px] mt-1">{brand.tag}</p>
+    </div>
+  </motion.div>
+);
 
-      {/* Horizontal Scroll */}
-      <div className="overflow-hidden">
-        <motion.div
-          className="flex gap-8 px-6"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{
-            repeat: Infinity,
-            duration: 20,
-            ease: "linear"
-          }}
-        >
-          {[...brands, ...brands].map((brand, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              className="min-w-[300px] h-[400px] rounded-2xl overflow-hidden relative"
-            >
-              {/* Image */}
-              <img
-                src={brand.img}
-                alt={brand.name}
-                className="w-full h-full object-cover"
-              />
+const Retail = () => (
+  <section id="retail" className="min-h-screen bg-black flex flex-col justify-center overflow-hidden py-20">
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/40"></div>
+    {/* Heading */}
+    <div className="text-center mb-12 px-6">
+      <p className="text-[11px] tracking-[4px] text-gray-600 uppercase mb-4">
+        Retail Ecosystem
+      </p>
+      <h2 className="text-5xl md:text-7xl font-light text-white font-serif">
+        800+ Stores. One{' '}
+        <span className="italic text-gray-400">Destination.</span>
+      </h2>
+      <p className="text-gray-600 mt-4 text-base">
+        North America's most powerful retail concentration — from global
+        flagships to exclusive local concepts.
+      </p>
+    </div>
 
-              {/* Text on Image */}
-              <div className="absolute bottom-4 left-4">
-                <h3 className="text-lg font-semibold">
-                  {brand.name}
-                </h3>
-              </div>
+    {/* Marquee */}
+    <div className="overflow-hidden">
+      <motion.div
+        className="flex gap-6 px-6"
+        animate={{ x: ['0%', '-50%'] }}
+        transition={{ repeat: Infinity, duration: 28, ease: 'linear' }}
+      >
+        {[...brands, ...brands].map((brand, i) => (
+          <BrandCard key={i} brand={brand} />
+        ))}
+      </motion.div>
+    </div>
 
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+    {/* Bottom */}
+    <div className="text-center mt-12 px-6">
+      <p className="text-white font-light text-lg mb-1">
+        <span className="font-normal">800+ stores</span> — the largest retail
+        roster in North America.
+      </p>
+      <p className="text-[11px] tracking-[3px] text-gray-600 uppercase mb-8">
+        Luxury · Fashion · Tech · F&B · Entertainment
+      </p>
+      <button className="px-10 py-3 border border-white/20 text-white text-[11px] tracking-[3px] uppercase hover:bg-white hover:text-black transition duration-300">
+        Explore Leasing Opportunities
+      </button>
+    </div>
 
-      {/* Bottom text */}
-      <div className="text-center mt-8 text-gray-400">
-        And 300+ more premium brands
-      </div>
-
-    </section>
-  );
-};
+  </section>
+);
 
 export default Retail;
