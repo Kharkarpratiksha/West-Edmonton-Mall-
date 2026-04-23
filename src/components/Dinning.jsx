@@ -5,10 +5,7 @@ const restaurants = [
   { name: 'Earls Kitchen',     tag: 'Fine Casual',      img: '/dining/earls.jpg' },
   { name: 'The Keg',           tag: 'Steakhouse',       img: '/dining/keg.jpg' },
   { name: 'Joey Restaurant',   tag: 'Modern Canadian',  img: '/dining/joey.jpg' },
-  { name: 'Milestones',        tag: 'Contemporary',     img: '/dining/milestones.jpg' },
-  { name: 'Booster Juice',     tag: 'Health & Fresh',   img: '/dining/booster.jpg' },
-  { name: 'Elephant & Castle', tag: 'Pub & Grill',      img: '/dining/elephant.jpg' },
-];
+ ];
 
 const stats = [
   { value: '100+', label: 'Restaurants & Cafés' },
