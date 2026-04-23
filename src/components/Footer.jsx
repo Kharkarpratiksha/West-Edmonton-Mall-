@@ -77,7 +77,7 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
 
           <p>
-            © 2024 West Edmonton Mall. All rights reserved.
+            © 2026 Pratiksha Kharkar. All rights reserved.
           </p>
 
           <div className="flex space-x-6 mt-4 md:mt-0">
