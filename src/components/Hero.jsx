@@ -84,26 +84,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* STATS */}
-      <div className="absolute bottom-6 sm:bottom-10 right-4 sm:right-10 lg:right-16 flex flex-row sm:flex-col gap-4 sm:gap-5 text-right text-white">
-
-        {[
-          { value: "32M+", label: "Annual Visitors" },
-          { value: "800+", label: "Stores & Services" },
-          { value: "5.3M", label: "Sq Ft" },
-        ].map((stat) => (
-          <div key={stat.label}>
-            <div className="text-xl sm:text-2xl lg:text-3xl font-light">
-              {stat.value}
-            </div>
-            <div className="text-[9px] sm:text-[10px] tracking-[2px] sm:tracking-[3px] uppercase text-gray-500 mt-1">
-              {stat.label}
-            </div>
-          </div>
-        ))}
-
-      </div>
-
       {/* Scroll Indicator */}
       <div className="hidden sm:flex absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/40">
         <span className="text-[10px] tracking-[3px] uppercase">Scroll</span>

@@ -76,7 +76,7 @@ const Luxury = () => (
         </div>
       </div>
 
-      {/* Ticker strip */}
+      {/* Ticker strip (kept animation) */}
       <div className="border-t border-b border-stone-200 py-4 sm:py-6 mb-12 sm:mb-20 overflow-hidden">
         <motion.div
           className="flex gap-8 sm:gap-12 whitespace-nowrap"
@@ -97,14 +97,11 @@ const Luxury = () => (
         </motion.div>
       </div>
 
-      {/* Offerings Grid */}
+      {/* Offerings Grid (NO animation now) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 border border-stone-200 mb-12 sm:mb-16">
         {offerings.map((item, i) => (
-          <motion.div
+          <div
             key={item.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
             className="bg-[#f5f0eb] p-6 sm:p-10 group hover:bg-stone-100 transition duration-300"
           >
             <p className="text-[10px] sm:text-[11px] tracking-[3px] text-stone-300 uppercase mb-3 sm:mb-4">
@@ -116,24 +113,6 @@ const Luxury = () => (
             <p className="text-stone-500 text-sm leading-relaxed">
               {item.desc}
             </p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Bottom stat bar */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-stone-200 border border-stone-200">
-        {[
-          { value: "32M+", label: "Annual Visitors" },
-          { value: "Top 3", label: "Retail Destination in Canada" },
-          { value: "40+", label: "Years of Luxury Retail Heritage" },
-        ].map((s) => (
-          <div key={s.label} className="bg-[#f5f0eb] px-6 sm:px-8 py-5 sm:py-6 text-center">
-            <div className="text-xl sm:text-2xl font-light text-stone-900 mb-1">
-              {s.value}
-            </div>
-            <div className="text-[10px] sm:text-[11px] tracking-[2px] text-stone-400 uppercase">
-              {s.label}
-            </div>
           </div>
         ))}
       </div>
