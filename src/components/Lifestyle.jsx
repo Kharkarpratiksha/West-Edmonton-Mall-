@@ -35,6 +35,10 @@ const Lifestyle = () => {
   const [index, setIndex] = useState(0);
   const [animate, setAnimate] = useState(true);
 
+  const slideWidth = typeof window !== "undefined"
+    ? window.innerWidth < 768 ? 320 : 700
+    : 700;
+
   useEffect(() => {
     const t = setInterval(() => {
       setAnimate(true);
@@ -60,43 +64,46 @@ const Lifestyle = () => {
         <p className="text-[11px] tracking-[4px] text-gray-600 uppercase mb-4">
           Beyond Retail
         </p>
-        <h2 className="text-5xl md:text-7xl font-light text-white font-serif">
-          A Complete{' '}
-          <span className="italic text-gray-400">Lifestyle.</span>
+
+        <h2 className="text-4xl md:text-7xl font-light text-white font-serif">
+          A Complete <span className="italic text-gray-400">Lifestyle.</span>
         </h2>
+
         <p className="text-gray-500 mt-4 text-base max-w-xl mx-auto">
-          WEM is not a mall with extras — it's a lifestyle destination where
-          retail is one of many reasons people come back.
+          WEM is not a mall with extras — it's a lifestyle destination where retail is one of many reasons people come back.
         </p>
       </div>
 
       {/* Slider */}
-      <div className="overflow-hidden px-6">
+      <div className="overflow-hidden px-4 md:px-6">
         <motion.div
-          className="flex gap-6"
-          animate={{ x: `-${index * 724}px` }}
+          className="flex gap-4 md:gap-6"
+          animate={{ x: `-${index * slideWidth}px` }}
           transition={animate ? { duration: 0.6, ease: 'easeInOut' } : { duration: 0 }}
         >
           {extended.map((item, i) => (
             <div
               key={i}
-              className="min-w-[460px] md:min-w-[700px] h-[460px] rounded-sm overflow-hidden relative flex-shrink-0"
+              className="min-w-[300px] md:min-w-[700px] h-[320px] md:h-[460px] rounded-sm overflow-hidden relative flex-shrink-0"
             >
               <img
                 src={item.img}
                 alt={item.title}
                 className="w-full h-full object-cover"
-                onError={(e) => { e.target.style.opacity = '0.1'; }}
               />
+
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-              <div className="absolute bottom-10 left-8 right-8 text-white">
-                <h3 className="text-2xl md:text-3xl font-light font-serif mb-2">
+
+              <div className="absolute bottom-6 md:bottom-10 left-4 md:left-8 right-4 md:right-8 text-white">
+                <h3 className="text-xl md:text-3xl font-light font-serif mb-2">
                   {item.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+
+                <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
                   {item.desc}
                 </p>
-                <button className="border border-white/30 text-white px-6 py-2 text-[11px] tracking-[3px] uppercase hover:bg-white hover:text-black transition duration-300">
+
+                <button className="border border-white/30 text-white px-4 md:px-6 py-2 text-[10px] md:text-[11px] tracking-[3px] uppercase hover:bg-white hover:text-black transition duration-300">
                   Learn More
                 </button>
               </div>
@@ -111,10 +118,10 @@ const Lifestyle = () => {
           <button
             key={i}
             onClick={() => { setAnimate(true); setIndex(i); }}
-            className={`w-1 h-1 rounded-full transition-all duration-300 ${
+            className={`transition-all duration-300 rounded-full ${
               i === index % slides.length
-                ? 'bg-white w-6'
-                : 'bg-gray-700'
+                ? 'bg-white w-6 h-1'
+                : 'bg-gray-700 w-2 h-2'
             }`}
           />
         ))}

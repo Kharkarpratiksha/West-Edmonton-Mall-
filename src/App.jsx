@@ -1,4 +1,8 @@
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 import Hero from "./components/Hero";
 import Scale from "./components/Scale";
 import Retail from "./components/Retail";
@@ -7,14 +11,12 @@ import Dinning from "./components/Dinning";
 import Events from "./components/Events";
 import Attractions from "./components/Attractions";
 import Luxury from "./components/Luxury";
-import Footer from "./components/Footer";
-import "./index.css";
+import AttractionDetail from "./components/AttractionDetail";
 
-function App() {
+function Home() {
   return (
     <>
-      <Navbar />
-      <Hero />  
+      <Hero />
       <Scale />
       <Retail />
       <Luxury />
@@ -22,9 +24,21 @@ function App() {
       <Lifestyle />
       <Events />
       <Attractions />
-      <Footer />
     </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <Navbar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/attractions/:slug" element={<AttractionDetail />} />
+      </Routes>
+
+      <Footer />
+    </>
+  );
+}

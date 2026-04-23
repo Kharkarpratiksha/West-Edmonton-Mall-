@@ -23,34 +23,33 @@ export default function Hero() {
         />
       </video>
 
-      {/* Gradient Overlay */}
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent" />
 
-      {/* Content — bottom left */}
-      <div className="absolute bottom-20 left-16 max-w-2xl text-white">
+      {/* CONTENT */}
+      <div className="absolute bottom-16 sm:bottom-20 left-4 sm:left-10 lg:left-16 right-4 sm:right-auto max-w-2xl text-white">
 
-        <p className="text-[11px] tracking-[4px] text-gray-400 mb-4 uppercase">
+        <p className="text-[10px] sm:text-[11px] tracking-[3px] sm:tracking-[4px] text-gray-400 mb-3 sm:mb-4 uppercase">
           Edmonton, Alberta · Canada's Largest Mall
         </p>
 
-        <h1 className="text-5xl md:text-7xl font-light leading-tight mb-5 font-serif">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-tight mb-4 sm:mb-5 font-serif">
           West Edmonton Mall
         </h1>
 
-        <p className="text-gray-300 text-base leading-relaxed mb-10 max-w-lg">
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-lg">
           5.3 million sq ft. 800+ stores. 32 million annual visitors.
           North America's most powerful retail & entertainment destination.
         </p>
 
-        {/* Buttons — fixed hover */}
-        <div className="flex flex-wrap gap-3">
+        {/* BUTTONS */}
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
 
-          {/* Primary */}
           <button
             onClick={() => scrollTo("#retail")}
             className="
-              px-7 py-3 bg-white text-black
-              text-[11px] tracking-[3px] uppercase
+              px-6 py-3 sm:px-7 sm:py-3 bg-white text-black
+              text-[10px] sm:text-[11px] tracking-[2px] sm:tracking-[3px] uppercase
               transition duration-300
               hover:bg-transparent hover:text-white hover:border hover:border-white
             "
@@ -58,12 +57,11 @@ export default function Hero() {
             Explore Leasing
           </button>
 
-          {/* Secondary */}
           <button
             onClick={() => scrollTo("#events")}
             className="
-              px-7 py-3 border border-white text-white
-              text-[11px] tracking-[3px] uppercase
+              px-6 py-3 sm:px-7 sm:py-3 border border-white text-white
+              text-[10px] sm:text-[11px] tracking-[2px] sm:tracking-[3px] uppercase
               transition duration-300
               hover:bg-white hover:text-black
             "
@@ -71,12 +69,11 @@ export default function Hero() {
             Book a Venue
           </button>
 
-          {/* Tertiary */}
           <button
             onClick={() => scrollTo("#contact")}
             className="
-              px-7 py-3 border border-white/30 text-white/60
-              text-[11px] tracking-[3px] uppercase
+              px-6 py-3 sm:px-7 sm:py-3 border border-white/30 text-white/60
+              text-[10px] sm:text-[11px] tracking-[2px] sm:tracking-[3px] uppercase
               transition duration-300
               hover:border-white hover:text-white
             "
@@ -87,26 +84,30 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Stats — bottom right */}
-      <div className="absolute bottom-20 right-16 flex flex-col gap-5 text-right text-white">
+      {/* STATS */}
+      <div className="absolute bottom-6 sm:bottom-10 right-4 sm:right-10 lg:right-16 flex flex-row sm:flex-col gap-4 sm:gap-5 text-right text-white">
+
         {[
           { value: "32M+", label: "Annual Visitors" },
           { value: "800+", label: "Stores & Services" },
           { value: "5.3M", label: "Sq Ft" },
         ].map((stat) => (
           <div key={stat.label}>
-            <div className="text-3xl font-light">{stat.value}</div>
-            <div className="text-[10px] tracking-[3px] uppercase text-gray-500 mt-1">
+            <div className="text-xl sm:text-2xl lg:text-3xl font-light">
+              {stat.value}
+            </div>
+            <div className="text-[9px] sm:text-[10px] tracking-[2px] sm:tracking-[3px] uppercase text-gray-500 mt-1">
               {stat.label}
             </div>
           </div>
         ))}
+
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40">
+      <div className="hidden sm:flex absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/40">
         <span className="text-[10px] tracking-[3px] uppercase">Scroll</span>
-        <div className="w-px h-8 bg-white/20 animate-pulse" />
+        <div className="w-px h-6 sm:h-8 bg-white/20 animate-pulse" />
       </div>
 
     </section>

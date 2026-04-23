@@ -14,8 +14,10 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 glass border-b border-gray-200/20">
-        <div className="max-w-7xl mx-auto px-6">
+      <nav className="fixed top-0 w-full z-50 glass border-b border-white/10">
+        
+        {/* ✅ SAME CONTAINER WIDTH AS SECTIONS */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
 
           <div className="flex justify-between items-center h-16">
 
@@ -32,7 +34,7 @@ const Navbar = () => {
               <img
                 src="/WEM_Cocoa_Logo.svg"
                 alt="West Edmonton Mall"
-                className="h-10 w-auto"
+                className="h-9 sm:h-10 w-auto"
               />
 
               <span className="text-gray-900 text-sm md:text-base font-medium tracking-wide">
@@ -40,21 +42,19 @@ const Navbar = () => {
               </span>
             </motion.a>
 
-            {/* Desktop Menu */}
+            {/* DESKTOP MENU */}
             <div className="hidden lg:block">
-              <div className="ml-10 flex items-baseline space-x-8">
+              <div className="flex items-center space-x-8">
                 {navLinks.map((link) => (
                   <motion.a
                     key={link.name}
                     href={link.href}
                     onClick={(e) => {
                       e.preventDefault();
-                      const element = document.querySelector(link.href);
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                      }
+                      const el = document.querySelector(link.href);
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="text-gray-700 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-all duration-300 hover:bg-gray-100/40 rounded-lg"
+                    className="text-gray-700 hover:text-black text-sm font-medium transition duration-300"
                     whileHover={{ scale: 1.05 }}
                   >
                     {link.name}
@@ -63,17 +63,14 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Mobile Button */}
+            {/* MOBILE BUTTON */}
             <div className="lg:hidden">
-              <motion.button
+              <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="glass inline-flex items-center justify-center p-2 rounded-lg text-gray-700 hover:text-gray-900 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
+                className="p-2 text-gray-700"
               >
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </motion.button>
+                ☰
+              </button>
             </div>
 
           </div>
@@ -82,32 +79,25 @@ const Navbar = () => {
 
       {/* MOBILE MENU */}
       {mobileMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="fixed top-16 left-0 right-0 glass border-b border-gray-200/20 z-40 lg:hidden"
-        >
-          <div className="px-4 pt-4 pb-4 space-y-2">
+        <div className="fixed top-16 left-0 right-0 bg-white border-b z-40 lg:hidden">
+          <div className="px-6 py-4 space-y-3">
             {navLinks.map((link) => (
-              <motion.a
+              <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => {
                   e.preventDefault();
-                  const element = document.querySelector(link.href);
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  const el = document.querySelector(link.href);
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
                   setMobileMenuOpen(false);
                 }}
-                className="block text-gray-700 hover:text-gray-900 px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-gray-100/40 rounded-lg"
-                whileHover={{ x: 8 }}
+                className="block text-gray-700 text-sm py-2"
               >
                 {link.name}
-              </motion.a>
+              </a>
             ))}
           </div>
-        </motion.div>
+        </div>
       )}
     </>
   );
