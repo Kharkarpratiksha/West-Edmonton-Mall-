@@ -12,13 +12,12 @@ import Attractions from "./components/Attractions";
 import Footer from "./components/Footer";
 import AttractionDetail from "./components/AttractionDetail";
 import Sponsorship from "./components/Sponsorship";
-import Leasing from "./components/Leasing";
+
 
 const slides = [
   { id: "overview",     label: "Overview",     component: <Hero /> },
   { id: "scale",        label: "Scale",        component: <Scale /> },
   { id: "retail",       label: "Retail",       component: <Retail /> },
-  { id: "leasing",      label: "Leasing",      component: <Leasing /> },
   { id: "luxury",       label: "Luxury",       component: <Luxury /> },
   { id: "dining",       label: "Dining",       component: <Dinning /> },
   { id: "lifestyle",    label: "Lifestyle",    component: <Lifestyle /> },

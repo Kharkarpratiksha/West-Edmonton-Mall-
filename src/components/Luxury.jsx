@@ -43,14 +43,6 @@ const Luxury = () => (
             32M+ annual visitors, dedicated premium wing — unrivalled reach
             without compromising exclusivity.
           </p>
-          <div className="flex flex-wrap gap-3">
-            <button className="px-6 py-2.5 bg-stone-900 text-white text-[11px] tracking-[3px] uppercase hover:bg-stone-700 transition duration-300">
-              Inquire About Flagship Leasing
-            </button>
-            <button className="px-6 py-2.5 border border-stone-300 text-stone-900 text-[11px] tracking-[3px] uppercase hover:bg-stone-900 hover:text-white transition duration-300">
-              Download Luxury Deck
-            </button>
-          </div>
         </div>
       </div>
 
