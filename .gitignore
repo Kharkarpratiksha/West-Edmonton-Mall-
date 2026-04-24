@@ -2,6 +2,7 @@ node_modules
 dist
 build
 *.mp4
+
 # Logs
 logs
 *.log
