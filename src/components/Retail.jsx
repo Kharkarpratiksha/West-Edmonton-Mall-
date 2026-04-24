@@ -71,9 +71,6 @@ const Retail = () => (
       <p className="text-[11px] tracking-[3px] text-gray-600 uppercase mb-5">
         Luxury · Fashion · Tech · F&B · Entertainment
       </p>
-      <button className="px-10 py-2.5 border border-white/20 text-white text-[11px] tracking-[3px] uppercase hover:bg-white hover:text-black transition duration-300">
-        Explore Leasing Opportunities
-      </button>
     </div>
 
   </section>
