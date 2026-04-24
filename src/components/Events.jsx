@@ -78,14 +78,6 @@ const Events = () => {
           );
         })}
       </div>
-
-      {/* CTA */}
-      <div className="mt-8 text-center">
-        <button className="px-10 py-2.5 bg-white text-black text-[11px] tracking-[3px] uppercase hover:bg-gray-100 transition">
-          Enquire About Event Booking
-        </button>
-      </div>
-
     </section>
   );
 };
